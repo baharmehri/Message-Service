@@ -9,11 +9,15 @@ from .models import UserRoles, User
 class UserSerializer(BaseModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'is_active', 'password', 'confirm_password', 'roles')
+        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'phone_number', 'is_active', 'password',
+                  'confirm_password', 'roles')
         read_only_fields = ('is_superuser', 'is_admin', 'is_customer')
 
     username = serializers.CharField(max_length=255)
+    first_name = serializers.CharField(max_length=100)
+    last_name = serializers.CharField(max_length=100)
     email = serializers.EmailField(max_length=255)
+    phone_number = serializers.CharField(max_length=11)
     password = serializers.CharField(min_length=8, write_only=True, validators=[
         contains_number_validator, contains_letter_validator, contains_special_char_validator
     ])
