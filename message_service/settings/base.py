@@ -71,6 +71,7 @@ THIRD_PARTY_APPS = [
     'drf_spectacular',
     'django_celery_results',
     'django_celery_beat',
+    'fcm_django',
 ]
 
 LOCAL_APPS = [
@@ -230,5 +231,17 @@ CELERY_RESULT_BACKEND = CELERY_BROKER_URL
 CELERY_RESULT_EXTENDED = True
 CELERY_RESULT_BACKEND_ALWAYS_RETRY = True
 CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+
+# endregion --------------------------------------------------------------------
+# endregion --------------------------------------------------------------------
+
+# region FCM DEVICE ----------------------------------------------------------------
+
+FCM_DJANGO_SETTINGS = {
+    "FCM_SERVER_KEY": env('FCM_SERVER_KEY'),
+    "ONE_DEVICE_PER_USER": False,
+    "DELETE_INACTIVE_DEVICES": False,
+    "FCM_DEVICE_MODEL": "app.fcm_manager.CustomFCMDevice",
+}
 
 # endregion --------------------------------------------------------------------
